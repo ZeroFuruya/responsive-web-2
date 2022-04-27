@@ -11,3 +11,9 @@ mobileMenu.addEventListener('click', () => {
 profileButton.addEventListener('click', () => {
     profileLinks.classList.toggle("active-menu");
 });
+
+window.onclick = function(event) {
+    if (event.target == profileLinks) {
+        profileLinks.style.display = "none";
+    }
+}

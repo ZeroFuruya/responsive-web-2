@@ -5,53 +5,74 @@
 }
 
 :root {
-    --ff-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --ff-accent: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* 
+    
+    ff = font-family
+    fw = font-weight
+    fc = font-color
+    fhl = font-highlight
+    
+    */
+    --ff-main: 'Montserrat';
+    --ff-accent: 'League Spartan', sans-serif;
+    --fw-200: 200;
+    --fc-magenta: rgb(255, 0, 170);
+    --fc-purple: rgb(191, 0, 255);
+    --fhl-puple: rgb(212, 85, 255);
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }
 
 html,
 body {
+    position: absolute;
+    inset: 0;
+    scroll-behavior: smooth;
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: rgb(10, 10, 10);
+    z-index: -3;
 }
 
-.background {
+
+/* .background {
     position: absolute;
     inset: 0;
     height: 100%;
     background: url("../imgs/bg.jpg");
+    filter: blur(3px);
     background-repeat: no-repeat;
     background-position: 50% 30%;
     background-size: cover;
     background-attachment: fixed;
     z-index: -2;
-}
+} */
 
-.navbar-clone {
-    position: absolute;
-    z-index: -1;
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    padding: .7rem;
+    padding-left: .7rem;
+    padding-bottom: .1rem;
+    justify-content: space-between;
     background: rgba(36, 36, 36, 0.25);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     backdrop-filter: blur( 4px);
-    border: 1px solid rgba( 255, 255, 255, 0.18);
-    width: 100%;
-    height: 5rem;
-}
-
-.navbar {
-    display: flex;
-    padding: 1rem;
-    padding-left: .7rem;
-    justify-content: space-between;
 }
 
 .header {
     font-family: var(--ff-accent);
-    color: slateblue;
+    color: var(--fc-purple);
     font-size: 2rem;
     font-weight: 400;
-    padding-block: .5rem;
+    padding-block: .9rem;
+    animation: flicker 1s linear 0s infinite alternate;
 }
 
 .nav-links {
@@ -60,25 +81,33 @@ body {
     padding: 0;
     display: flex;
     font-family: var(--ff-main);
+    padding-left: 10rem;
 }
 
 .nav-links li:hover {
-    background: rgba(211, 211, 211, 0.25);
+    background: rgba(67, 67, 67, 0.25);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     backdrop-filter: blur( 4px);
     border-radius: 10px;
 }
 
 .nav-links li {
-    padding-block: .5rem;
+    padding-block: 1rem;
+    height: 10.5vh;
 }
 
 .nav-links li a {
     font-size: 1.5rem;
     padding-inline: 2rem;
-    color: aliceblue;
+    color: var(--fc-purple);
     text-shadow: 0 0 5px black;
     text-decoration: none;
+}
+
+.nav-links li a:hover {
+    color: rgb(255, 186, 232);
+    text-shadow: 0 0 1.5rem var(--fc-purple);
+    text-decoration: underline;
 }
 
 .profile {
@@ -94,9 +123,11 @@ body {
     position: absolute;
     padding: 0;
     margin: 0;
+    margin-top: .4rem;
     width: 3em;
     height: 3em;
     border-radius: 50%;
+    border: .1rem solid rgb(102, 0, 255);
     z-index: 3;
     cursor: pointer;
 }
@@ -104,6 +135,7 @@ body {
 .icons-button {
     padding: 0;
     margin: 0;
+    margin-top: .4rem;
     position: absolute;
     right: 1rem;
     z-index: 1;
@@ -120,9 +152,10 @@ body {
     font-size: large;
     padding: 0;
     margin: 0;
+    margin-top: .4rem;
     position: absolute;
-    top: -.1rem;
-    right: -.23rem;
+    top: -.2rem;
+    right: -.5rem;
     justify-content: center;
     justify-items: center;
     align-content: center;
@@ -130,7 +163,7 @@ body {
     background: rgba(36, 36, 36, 0.25);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     backdrop-filter: blur( 4px);
-    border: 1px solid rgba( 255, 255, 255, 0.18);
+    border: .1rem ridge rgba(140, 0, 255, 0.18);
     border-radius: 10px;
     width: 3.5rem;
     z-index: -3;
@@ -157,6 +190,8 @@ body {
 .more-icons li:hover {
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur( 4px);
+    border-radius: .5rem;
+    font-size: 2rem;
 }
 
 .more-icons:first-child {
@@ -164,14 +199,15 @@ body {
 }
 
 .more-icons :is(a) {
-    color: rgb(255, 103, 222);
+    color: var(--fc-purple);
     text-decoration: none;
     font-weight: 400;
     text-align: center;
 }
 
 .more-icons a:hover {
-    color: rgb(255, 225, 55);
+    color: rgb(255, 92, 201);
+    text-shadow: 0 0 .5rem var(--fc-purple);
 }
 
 .active-menu {
@@ -180,7 +216,58 @@ body {
     padding: .5rem;
 }
 
-@media (max-width: 1060px) {
+.main-cont {
+    padding-inline: 2rem;
+    margin: 0;
+    margin-left: 7rem;
+    margin-top: 13rem;
+    max-width: 80vw;
+    max-height: 100vh;
+    width: 80vw;
+    height: 80vh;
+}
+
+.intro {
+    font-family: var(--ff-main);
+    color: white;
+    font-size: 5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.accents {
+    font-family: var(--ff-accent);
+    color: rgb(191, 0, 255);
+    text-decoration: none;
+}
+
+.accents:hover {
+    color: rgb(255, 73, 198);
+    text-shadow: 0 0 .1em rgb(191, 0, 255);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.etc {
+    color: white;
+    background-color: gray;
+}
+
+.etc2 {
+    color: white;
+    background-color: rgb(35, 35, 35);
+}
+
+
+/* Max Tab */
+
+@media (max-width: 1025px) {
+    .nav-links {
+        padding-left: 0rem;
+    }
+}
+
+@media (max-width: 870px) {
     .nav-links {
         display: none;
     }
@@ -188,15 +275,18 @@ body {
         padding: 0;
         margin: 0;
         position: absolute;
+        color: var(--fc-magenta);
         right: 5.7rem;
         z-index: 1;
+        top: 21%;
         font-size: 3rem;
         display: block;
         cursor: pointer;
     }
     .mobile-menu::before {
         float: left;
-        color: rgb(14, 14, 14);
+        color: var(--fc-magenta);
+        animation: flicker 3s linear infinite alternate;
     }
     .mobile-links {
         display: none;
@@ -214,7 +304,7 @@ body {
         background: rgba(36, 36, 36, 0.25);
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         backdrop-filter: blur( 4px);
-        border: 1px solid rgba( 255, 255, 255, 0.18);
+        border: .1rem ridge rgba( 255, 0, 200, 0.18);
         border-radius: 10px;
         z-index: -2;
     }
@@ -224,6 +314,7 @@ body {
         margin: 0;
         padding: 0;
         display: flex;
+        padding-left: .5rem;
         width: 100%;
         font-family: var(--ff-main);
         padding-block: .5rem;
@@ -232,6 +323,7 @@ body {
     .mobile-links li:hover {
         background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur( 4px);
+        border-radius: .5rem;
     }
     .mobile-links:first-child {
         padding-top: 3.5rem;
@@ -243,7 +335,9 @@ body {
         font-weight: 400;
     }
     .mobile-links a:hover {
-        color: rgb(255, 225, 55);
+        color: rgb(255, 103, 222);
+        text-shadow: 0 0 .5em rgb(255, 0, 170);
+        cursor: pointer;
     }
     .active-menu {
         display: flex;
@@ -258,7 +352,10 @@ body {
     }
 }
 
-@media (min-width: 1060px) {
+
+/* Min Tab */
+
+@media (min-width: 870px) {
     .mobile-menu,
     .mobile-menu::before {
         display: none;
@@ -277,6 +374,36 @@ body {
         color: slateblue;
         font-size: 1.5rem;
         font-weight: 400;
-        padding-block: .5rem;
+        padding-block: 1rem;
+    }
+}
+
+
+/* ANIMATIONS */
+
+@keyframes flicker {
+    0% {
+        color: rgb(50, 22, 84);
+        text-shadow: 0 0 0 black;
+    }
+    20% {
+        color: rgb(204, 133, 255);
+        text-shadow: 0 0 1.5rem var(--fc-purple);
+    }
+    40% {
+        color: rgb(39, 14, 49);
+        text-shadow: 0 0 0 black;
+    }
+    60% {
+        color: rgb(234, 203, 255);
+        text-shadow: 0 0 1.5rem var(--fc-purple);
+    }
+    80% {
+        color: rgb(203, 130, 255);
+        text-shadow: 0 0 1.5rem var(--fc-purple);
+    }
+    100% {
+        color: rgb(30, 14, 49);
+        text-shadow: 0 0 0 black;
     }
 }
