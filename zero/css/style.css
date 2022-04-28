@@ -16,9 +16,9 @@
     --ff-main: 'Montserrat';
     --ff-accent: 'League Spartan', sans-serif;
     --fw-200: 200;
-    --fc-magenta: rgb(255, 0, 170);
-    --fc-purple: rgb(191, 0, 255);
-    --fhl-puple: rgb(212, 85, 255);
+    --fc-magenta: rgb(0, 158, 21);
+    --fc-purple: rgb(111, 255, 0);
+    --fhl-puple: rgb(178, 255, 85);
 }
 
 ::-webkit-scrollbar {
@@ -32,9 +32,14 @@ body {
     scroll-behavior: smooth;
     margin: 0;
     padding: 0;
-    height: 100%;
-    background-color: rgb(10, 10, 10);
+    height: 100vh;
     z-index: -3;
+}
+
+body {
+    min-height: 100vh;
+    height: 100vh;
+    background: #28040F;
 }
 
 
@@ -64,6 +69,7 @@ body {
     background: rgba(36, 36, 36, 0.25);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     backdrop-filter: blur( 4px);
+    z-index: 4;
 }
 
 .header {
@@ -71,8 +77,9 @@ body {
     color: var(--fc-purple);
     font-size: 2rem;
     font-weight: 400;
+    padding-left: 1rem;
     padding-block: .9rem;
-    animation: flicker 1s linear 0s infinite alternate;
+    animation: flicker 1s linear 0s infinite;
 }
 
 .nav-links {
@@ -105,7 +112,7 @@ body {
 }
 
 .nav-links li a:hover {
-    color: rgb(255, 186, 232);
+    color: var(--fhl-puple);
     text-shadow: 0 0 1.5rem var(--fc-purple);
     text-decoration: underline;
 }
@@ -127,7 +134,7 @@ body {
     width: 3em;
     height: 3em;
     border-radius: 50%;
-    border: .1rem solid rgb(102, 0, 255);
+    border: .1rem solid rgb(141, 255, 109);
     z-index: 3;
     cursor: pointer;
 }
@@ -163,7 +170,7 @@ body {
     background: rgba(36, 36, 36, 0.25);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     backdrop-filter: blur( 4px);
-    border: .1rem ridge rgba(140, 0, 255, 0.18);
+    border: .1rem ridge rgba(119, 255, 180, 0.18);
     border-radius: 10px;
     width: 3.5rem;
     z-index: -3;
@@ -206,7 +213,7 @@ body {
 }
 
 .more-icons a:hover {
-    color: rgb(255, 92, 201);
+    color: rgb(157, 255, 92);
     text-shadow: 0 0 .5rem var(--fc-purple);
 }
 
@@ -219,43 +226,87 @@ body {
 .main-cont {
     padding-inline: 2rem;
     margin: 0;
-    margin-left: 7rem;
-    margin-top: 13rem;
+    margin-left: 10.5vw;
+    margin-top: 35vh;
     max-width: 80vw;
     max-height: 100vh;
     width: 80vw;
-    height: 80vh;
+    height: 69vh;
 }
 
 .intro {
     font-family: var(--ff-main);
     color: white;
-    font-size: 5rem;
+    font-size: clamp(1.5rem, 10vw, 6.4vw);
     padding: 0;
     margin: 0;
+    background-color: rgba(0, 0, 0, 0.539);
+    backdrop-filter: blur( 4px);
+    mix-blend-mode: exclusion;
+    border: 0.01rem ridge rgba(255, 255, 255, 0.256);
+    padding: 2rem;
 }
 
 .accents {
     font-family: var(--ff-accent);
-    color: rgb(191, 0, 255);
+    color: var(--fc-magenta);
     text-decoration: none;
 }
 
 .accents:hover {
-    color: rgb(255, 73, 198);
-    text-shadow: 0 0 .1em rgb(191, 0, 255);
+    color: var(--fc-purple);
+    text-shadow: 0 0 .1em var(--fhl-puple);
     text-decoration: underline;
     cursor: pointer;
 }
 
 .etc {
     color: white;
-    background-color: gray;
+    padding-inline: 5rem;
+    padding-block: 3rem;
+    background: rgba(36, 36, 36, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur( 4px);
+    font-family: var(--ff-main);
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 2rem;
 }
 
 .etc2 {
     color: white;
-    background-color: rgb(35, 35, 35);
+    padding-inline: 5rem;
+    padding-block: 3rem;
+    background: rgba(36, 36, 36, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur( 4px);
+    font-family: var(--ff-main);
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 2rem;
+}
+
+
+/* PARALLAX */
+
+.parallax-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    padding: 6rem;
+    animation: color-change 20s linear infinite alternate;
+}
+
+.parallax-bg img {
+    position: absolute;
+    background-position: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 
@@ -267,7 +318,7 @@ body {
     }
 }
 
-@media (max-width: 870px) {
+@media (max-width: 880px) {
     .nav-links {
         display: none;
     }
@@ -304,7 +355,7 @@ body {
         background: rgba(36, 36, 36, 0.25);
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         backdrop-filter: blur( 4px);
-        border: .1rem ridge rgba( 255, 0, 200, 0.18);
+        border: .1rem ridge rgba(34, 255, 0, 0.18);
         border-radius: 10px;
         z-index: -2;
     }
@@ -330,13 +381,13 @@ body {
     }
     .mobile-links :is(a) {
         float: right;
-        color: rgb(255, 103, 222);
+        color: var(--fc-purple);
         text-decoration: none;
         font-weight: 400;
     }
     .mobile-links a:hover {
-        color: rgb(255, 103, 222);
-        text-shadow: 0 0 .5em rgb(255, 0, 170);
+        color: rgb(77, 255, 61);
+        text-shadow: 0 0 .5em var(--fhl-puple);
         cursor: pointer;
     }
     .active-menu {
@@ -350,12 +401,18 @@ body {
     .more-icons li a i {
         margin-left: 0;
     }
+    .main-cont {
+        height: 75vh;
+    }
+    .intro {
+        text-align: center;
+    }
 }
 
 
 /* Min Tab */
 
-@media (min-width: 870px) {
+@media (min-width: 880px) {
     .mobile-menu,
     .mobile-menu::before {
         display: none;
@@ -365,6 +422,9 @@ body {
     }
     .mobile-links :is(a) {
         text-decoration: none;
+    }
+    .header {
+        font-size: 1.7rem;
     }
 }
 
@@ -383,27 +443,39 @@ body {
 
 @keyframes flicker {
     0% {
-        color: rgb(50, 22, 84);
+        color: rgb(52, 225, 0);
         text-shadow: 0 0 0 black;
     }
     20% {
-        color: rgb(204, 133, 255);
-        text-shadow: 0 0 1.5rem var(--fc-purple);
+        color: rgb(139, 255, 14);
+        text-shadow: 0 0 1.5rem var(--fhl-puple);
     }
     40% {
-        color: rgb(39, 14, 49);
+        color: rgb(49, 14, 20);
         text-shadow: 0 0 0 black;
     }
     60% {
-        color: rgb(234, 203, 255);
-        text-shadow: 0 0 1.5rem var(--fc-purple);
+        color: rgb(16, 145, 12);
+        text-shadow: 0 0 1.5rem var(--fhl-puple);
     }
     80% {
-        color: rgb(203, 130, 255);
-        text-shadow: 0 0 1.5rem var(--fc-purple);
+        color: rgb(142, 255, 107);
+        text-shadow: 0 0 1.5rem var(--fhl-puple);
     }
     100% {
-        color: rgb(30, 14, 49);
+        color: rgb(49, 14, 20);
         text-shadow: 0 0 0 black;
+    }
+}
+
+@keyframes color-change {
+    0% {
+        background-color: red;
+    }
+    50% {
+        background-color: blue;
+    }
+    100% {
+        background-color: yellow;
     }
 }
