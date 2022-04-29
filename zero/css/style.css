@@ -16,20 +16,26 @@
     --ff-main: 'Montserrat';
     --ff-accent: 'League Spartan', sans-serif;
     --fw-200: 200;
-    --fc-magenta: rgb(0, 158, 21);
-    --fc-purple: rgb(111, 255, 0);
-    --fhl-puple: rgb(178, 255, 85);
+    --fc-magenta: rgb(0, 4, 223);
+    --fc-purple: rgb(61, 68, 255);
+    --fhl-puple: rgb(124, 112, 255);
 }
 
 ::-webkit-scrollbar {
     width: 0;
 }
 
+::selection {
+    color: rgb(14, 0, 0);
+    background: rgba(255, 255, 255, 0.502);
+    backdrop-filter: blur(4px);
+}
+
 html,
 body {
+    scroll-behavior: smooth;
     position: absolute;
     inset: 0;
-    scroll-behavior: smooth;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -39,7 +45,7 @@ body {
 body {
     min-height: 100vh;
     height: 100vh;
-    background: #28040F;
+    background: #28000c;
 }
 
 
@@ -134,7 +140,7 @@ body {
     width: 3em;
     height: 3em;
     border-radius: 50%;
-    border: .1rem solid rgb(141, 255, 109);
+    border: .1rem solid rgb(119, 109, 255);
     z-index: 3;
     cursor: pointer;
 }
@@ -170,7 +176,7 @@ body {
     background: rgba(36, 36, 36, 0.25);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     backdrop-filter: blur( 4px);
-    border: .1rem ridge rgba(119, 255, 180, 0.18);
+    border: .1rem ridge rgba(124, 119, 255, 0.18);
     border-radius: 10px;
     width: 3.5rem;
     z-index: -3;
@@ -213,7 +219,7 @@ body {
 }
 
 .more-icons a:hover {
-    color: rgb(157, 255, 92);
+    color: rgb(111, 92, 255);
     text-shadow: 0 0 .5rem var(--fc-purple);
 }
 
@@ -226,25 +232,29 @@ body {
 .main-cont {
     padding-inline: 2rem;
     margin: 0;
-    margin-left: 10.5vw;
     margin-top: 35vh;
     max-width: 80vw;
     max-height: 100vh;
     width: 80vw;
+    padding-left: 0;
     height: 69vh;
+    text-align: justify;
 }
 
 .intro {
+    position: absolute;
     font-family: var(--ff-main);
     color: white;
-    font-size: clamp(1.5rem, 10vw, 6.4vw);
-    padding: 0;
+    font-size: clamp(2.5rem, 10vw, 7vw);
     margin: 0;
     background-color: rgba(0, 0, 0, 0.539);
     backdrop-filter: blur( 4px);
     mix-blend-mode: exclusion;
     border: 0.01rem ridge rgba(255, 255, 255, 0.256);
     padding: 2rem;
+    width: 100vw;
+    height: 27vh;
+    overflow: hidden;
 }
 
 .accents {
@@ -262,28 +272,104 @@ body {
 
 .etc {
     color: white;
-    padding-inline: 5rem;
     padding-block: 3rem;
     background: rgba(36, 36, 36, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-top: 1em outset rgba(10, 0, 48, 0.477);
     backdrop-filter: blur( 4px);
     font-family: var(--ff-main);
     text-align: justify;
     font-size: 1rem;
     line-height: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
 }
 
-.etc2 {
+.divider {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.etc .divider img {
+    width: 60vw;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+    position: relative;
+}
+
+.img-overlay {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background-color: rgba(17, 17, 17, 0.338);
+    backdrop-filter: blur(4px);
+    overflow: hidden;
+    width: 0;
+    transition: .5s ease;
+}
+
+.img-overlay:hover .overlay {
+    width: 100%;
+}
+
+.right {
+    position: absolute;
+    inset: 0;
+    left: 100%;
+    overflow: hidden;
+    background-color: rgba(17, 17, 17, 0.338);
+    backdrop-filter: blur(4px);
+    overflow: hidden;
+    width: 0;
+    transition: .5s ease;
+}
+
+.img-overlay:hover .right {
+    width: 100%;
+    left: 0;
+}
+
+.overlay-text {
     color: white;
-    padding-inline: 5rem;
-    padding-block: 3rem;
-    background: rgba(36, 36, 36, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    backdrop-filter: blur( 4px);
-    font-family: var(--ff-main);
-    text-align: justify;
-    font-size: 1rem;
-    line-height: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+
+.overlay-text a {
+    text-decoration: none;
+    font-size: 2rem;
+    color: aliceblue;
+}
+
+.overlay-text a:hover {
+    text-decoration: underline;
+    color: rgb(141, 0, 0);
+}
+
+.etc-head {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.split {
+    width: 30vw;
+    margin-inline: 2rem;
+}
+
+.split h1 {
+    font-size: 2rem;
 }
 
 
@@ -296,7 +382,7 @@ body {
     width: 100%;
     height: 100%;
     padding: 6rem;
-    animation: color-change 20s linear infinite alternate;
+    animation: color-change 2s linear infinite alternate;
 }
 
 .parallax-bg img {
@@ -315,6 +401,10 @@ body {
 @media (max-width: 1025px) {
     .nav-links {
         padding-left: 0rem;
+    }
+    .etc {
+        display: block;
+        padding-inline: 2rem;
     }
 }
 
@@ -354,8 +444,8 @@ body {
         align-items: center;
         background: rgba(36, 36, 36, 0.25);
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        backdrop-filter: blur( 4px);
-        border: .1rem ridge rgba(34, 255, 0, 0.18);
+        backdrop-filter: blur(4px);
+        border: .1rem ridge rgba(13, 0, 255, 0.18);
         border-radius: 10px;
         z-index: -2;
     }
@@ -386,7 +476,7 @@ body {
         font-weight: 400;
     }
     .mobile-links a:hover {
-        color: rgb(77, 255, 61);
+        color: rgb(61, 71, 255);
         text-shadow: 0 0 .5em var(--fhl-puple);
         cursor: pointer;
     }
@@ -406,6 +496,39 @@ body {
     }
     .intro {
         text-align: center;
+    }
+    .etc {
+        display: flex;
+        flex-direction: column;
+        padding-inline: 2rem;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+    }
+    .divider {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+    }
+    .split h1 {
+        font-size: 2rem;
+    }
+    .split {
+        width: 80vw;
+        font-size: 1rem;
+    }
+    .etc .divider img {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 850px) {
+    .intro {
+        height: 40vh;
     }
 }
 
@@ -436,6 +559,10 @@ body {
         font-weight: 400;
         padding-block: 1rem;
     }
+    .etc-head {
+        font-size: 1.5rem;
+        text-align: center;
+    }
 }
 
 
@@ -443,39 +570,36 @@ body {
 
 @keyframes flicker {
     0% {
-        color: rgb(52, 225, 0);
+        color: rgb(34, 0, 225);
         text-shadow: 0 0 0 black;
     }
     20% {
-        color: rgb(139, 255, 14);
+        color: rgb(50, 14, 255);
         text-shadow: 0 0 1.5rem var(--fhl-puple);
     }
     40% {
-        color: rgb(49, 14, 20);
+        color: rgb(16, 14, 49);
         text-shadow: 0 0 0 black;
     }
     60% {
-        color: rgb(16, 145, 12);
+        color: rgb(36, 12, 145);
         text-shadow: 0 0 1.5rem var(--fhl-puple);
     }
     80% {
-        color: rgb(142, 255, 107);
+        color: rgb(122, 107, 255);
         text-shadow: 0 0 1.5rem var(--fhl-puple);
     }
     100% {
-        color: rgb(49, 14, 20);
+        color: rgb(22, 14, 49);
         text-shadow: 0 0 0 black;
     }
 }
 
 @keyframes color-change {
     0% {
-        background-color: red;
-    }
-    50% {
-        background-color: blue;
+        background: rgb(57, 0, 0);
     }
     100% {
-        background-color: yellow;
+        background: black;
     }
 }
