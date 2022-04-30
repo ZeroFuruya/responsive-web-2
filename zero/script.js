@@ -56,3 +56,22 @@ window.addEventListener('scroll', () => {
     }
 
 });
+
+// ARROW
+
+const arrowButton = document.querySelector(".arrow");
+
+
+arrowButton.addEventListener('click', () => {
+
+    window.location.href = 'index.html#work';
+
+});
+
+arrowButton.addEventListener('mousedown', () => {
+    arrowButton.style.border = "2px inset rgba(108, 108, 108, 0.377)";
+});
+
+arrowButton.addEventListener('mouseup', () => {
+    arrowButton.style.border = "2px outset rgba(108, 108, 108, 0.377)";
+});
