@@ -493,6 +493,7 @@ h1 {
 @media (max-width: 1025px) {
     .nav-links {
         padding-left: 0rem;
+        padding-top: 10rem;
     }
     .etc {
         display: block;
